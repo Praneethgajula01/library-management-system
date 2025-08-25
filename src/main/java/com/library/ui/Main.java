@@ -2,7 +2,7 @@
 public class Main {
     public static void main(String[] args) {
         // Create a new instance of our Library.
-        Library library = new Library();
+        LibraryService library = new LibraryService();
 
         // Add some books and members to get started.
         library.addBook(new Book("B1", "The Hobbit", "J.R.R. Tolkien"));
