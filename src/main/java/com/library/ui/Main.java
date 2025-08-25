@@ -1,32 +1,42 @@
-// Main.java (console demo)
+package com.library.ui;
+
+import com.library.model.*;
+import com.library.repository.*;
+import com.library.service.*;
+
 public class Main {
     public static void main(String[] args) {
-        // Create a new instance of our Library.
-        LibraryService library = new LibraryService();
+// Create a new instance of our Library with repositories.
+Repository<Book> bookRepo = new InMemoryBookRepository();
+Repository<Member> memberRepo = new InMemoryMemberRepository();
+LibraryService library = new LibraryService(bookRepo, memberRepo);
 
-        // Add some books and members to get started.
+
+        // Add some books
         library.addBook(new Book("B1", "The Hobbit", "J.R.R. Tolkien"));
         library.addBook(new Book("B2", "Clean Code", "Robert C. Martin"));
+
+        // Add members
         library.addMember(new Member("M1", "Alice"));
         library.addMember(new Member("M2", "Bob"));
 
-        // Step 1: Show all books initially.
+        // List books
         System.out.println("All Books:");
         library.listAllBooks();
 
-        // Step 2: Simulate issuing a book.
+        // Issue a book
         System.out.println("\nIssuing 'The Hobbit' to Alice...");
         library.issueBook("B1", "M1");
 
-        // Step 3: Check which books are currently borrowed.
+        // Show borrowed books
         System.out.println("\nBorrowed Books:");
         library.showBorrowedBooks();
 
-        // Step 4: Simulate returning the book.
+        // Return book
         System.out.println("\nReturning 'The Hobbit'...");
         library.returnBook("B1");
 
-        // Step 5: Show all books again to confirm the book is now available.
+        // List books again
         System.out.println("\nAll Books after return:");
         library.listAllBooks();
     }
