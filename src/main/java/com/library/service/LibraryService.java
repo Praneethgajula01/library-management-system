@@ -51,5 +51,6 @@ public class LibraryService {
     public void listAllBooks() {
         bookRepo.findAll().forEach(System.out::println);
     }
+
 }
 

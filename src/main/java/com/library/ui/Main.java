@@ -6,9 +6,11 @@ import com.library.service.*;
 
 public class Main {
     public static void main(String[] args) {
-        Repository<Book> bookRepo = new InMemoryBookRepository();
-        Repository<Member> memberRepo = new InMemoryMemberRepository();
-        LibraryService library = new LibraryService(bookRepo, memberRepo);
+// Create a new instance of our Library with repositories.
+Repository<Book> bookRepo = new InMemoryBookRepository();
+Repository<Member> memberRepo = new InMemoryMemberRepository();
+LibraryService library = new LibraryService(bookRepo, memberRepo);
+
 
         // Add some books
         library.addBook(new Book("B1", "The Hobbit", "J.R.R. Tolkien"));
